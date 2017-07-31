@@ -1,0 +1,30 @@
+{
+  "sync_cronjob": {
+    "project_name": "dev_sync_hs_events_sync",
+    "aws_region": "us-east-1",
+    "profile_name": "default",
+    "s3_bucket": "hs-events-dev",
+    "events": [
+      {
+        "function": "manage.get_calendars",
+        "expression": "rate(1 minute)"
+      }
+    ],
+    "use_precompiled_packages": true
+  },
+  "api": {
+    "project_name": "dev_sync_hs_events_api",
+    "keep_warm": false,
+    "aws_region": "us-east-1",
+    "profile_name": "default",
+    "s3_bucket": "hs-events-dev",
+    "app_function": "manage.app",
+    "http_methods": [
+      "GET"
+    ],
+    "parameter_depth": 1,
+    "timeout_seconds": 300,
+    "memory_size": 128,
+    "use_precompiled_packages": true
+  }
+}
